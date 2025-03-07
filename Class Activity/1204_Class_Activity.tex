@@ -1,0 +1,42 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry} % DL: 쪽여백 조정
+\usepackage{setspace} % DL: 줄간격 조정
+\usepackage{graphicx} % Required for inserting images
+\usepackage{kotex}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mdframed}
+
+% set indent length to zero.
+\setlength{\parindent}{0pt}
+
+\title{1204 Class Activity}
+\author{박예영}
+\date{}
+\begin{document}
+\maketitle
+\begin{mdframed}
+Let $n$ be a positive integer. Let $S_n$ be the set consisting of sequences $[i_1, i_2, \cdots, i_k]$ of positive integers such that $0 < i_1  <  i_2 <  \cdots  < i_k < n+1$ (thus the length $k$ of a sequence in this set should be between $1$ and $n$).\\
+On this set $S_n$, we impose the following order (you can assume that it is indeed an order relation on $S_n$):\\
+$[i_1, i_2, \cdots, i_p]$ is less than or equal to $[j_1, j_2, \cdots, j_q]$, if\\
+(1) $p$ is larger than or equal to $q$, and \\
+(2) $i_k$ is less than or equal to $j_k$ for all $k$ between $1$ and $q$.\\\\
+$\textbf{Question}$: Prove that for any positive integer $n$, the poset $S_n$ is a distributive lattice.
+\end{mdframed}
+
+\begin{proof}
+First, we want to show that $S_n$ is a lattice.\\
+So, take any two elements in $S_n$, call it $I$ and $J$. Let $I = [i_1, i_2, \cdots, i_p]$ and $J = [j_1, j_2, \cdots, j_q]$ and let $p \geq q$.\\
+Consider $$A = [\max(i_1, j_1), \max(i_2, j_2), \cdots, \max(i_q, j_q)]$$ and $$B = [\min(i_1, j_1), \min(i_2, j_2), \cdots, \min(i_q, j_q), i_{q+1}, \cdots, i_p]$$\\
+Recall the definition of the join and the meet. It is obvious that $A$ is larger than or equal to $I$ and $J$, $B$ is less than or equal to $I$ and $J$\\
+Consider $C, D \in S_n$ such that $C$ is larger than or equal to $A$ and $B$, $D$ is less than or equal to $A$ and $B$. Then, the length of $C$ is obviously smaller than or equal to the length of $A$. Also, all integers constitute $C$ are larger than or equal to the integers constitute $A$. Similarly, the length of $D$ is larger than or equal to $B$. Also, all integers constitute $D$ are less than or equal to the integers constitute $B$. Therefore, they are the join and the meet of $I$ and $J$. Uniqueness is obvious. Hence, we showed that $S_n$ is a lattice.\\
+Second, we want to show that $S_n$ has a distributive property. i.e. $I\vee(J\wedge K) = (I\vee J)\wedge(I\vee K)$.\\
+Let $I$ and $J$ are the same elements we defined above, and $K = [k_1, k_2, \cdots, k_r]$ where $p \geq q \geq r$.\\
+Compute the left-hand side. $$I \vee (J \wedge K) = [i_1, \cdots, i_p] \vee [\min(j_1, k_1), \cdots, \min(j_r, k_r), j_{r+1}, \cdots, j_q]$$ $$=[\max(i_1, \min(j_1, k_1)), \cdots, \max(i_r, \min(j_r, k_r)), \cdots, \min(i_q, j_q)]$$\\
+Compute the right-hand side. $$(I\vee J)\wedge(I\vee K)$$ $$= [\max(i_1, j_1), \cdots, \max(i_q, j_q)] \wedge [\max(i_1, k_1), \cdots, \max(i_r, k_r)]$$ $$=[\min(\max(i_1, j_1), \max(i_1, k_1)), \cdots, \min(\max(i_r, j_r), \max(i_r, k_r)), \cdots, \max(i_q, j_q)]$$
+So, we want to show that for any $i, j, k$ in positive integers, $\max(i, \min(j, k))$ $=$ $\min(\max(i, j), \max(i, k))$.\\
+If $i$ is maximal element among $i, j, k$, then, $$\max(i, \min(j, k)) = i$$$$\min(\max(i, j), \max(i, k))=\min(i, i) = i$$.\\
+If $j$ is maximal element among $i, j, k$, then, $$\max(i, \min(j, k)) = \max(i, k)$$$$\min(\max(i, j), \max(i, k)) = \min(j, \max(i, k)) = \max(i, k)$$.\\
+If $k$ is maximal element among $i, j, k$, then, $$\max(i, \min(j, k)) = \max(i, j)$$$$\min(\max(i, j), \max(i, k))=\min(\max(i, j), k) = \max(i, j)$$.\\
+Therefore, distributive property works well in this lattice.
+\end{proof}
+
+\end{document}

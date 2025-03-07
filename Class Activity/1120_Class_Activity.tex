@@ -1,0 +1,41 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry} % DL: 쪽여백 조정
+\usepackage{setspace} % DL: 줄간격 조정
+\usepackage{graphicx} % Required for inserting images
+\usepackage{kotex}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mdframed}
+
+% set indent length to zero.
+\setlength{\parindent}{0pt}
+
+\title{1120 Class Activity}
+\author{박예영}
+\date{}
+\begin{document}
+\maketitle
+\begin{mdframed}
+1. Let graph $G = G_1 \cup G_2$ where $G_1 = C_3$ and $G_2 = P_3$.\\Find all eigenvalues of $L_G$, the Laplacian matrix of $G$.\\
+2. Above situation, let $G_2 = C_3$. Find all eigenvalues of $L_G$.
+\end{mdframed}
+
+\begin{proof}
+1. We want to find the adjacent matrix of $G$.\\
+We know that the adjacent matrices of $C_3$ and $P_3$.\\
+$$A_{C_3} = \begin{bmatrix}0&1&1\\1&0&1\\1&1&0\\ \end{bmatrix} ; A_{P_3} = \begin{bmatrix}0&1&0\\1&0&1\\0&1&0\\ \end{bmatrix}$$
+Therefore, the adjacent matrix of $G$ is $A_G = \begin{bmatrix}0&1&1&0&0&0\\1&0&1&0&0&0\\1&1&0&0&0&0\\0&0&0&0&1&0\\0&0&0&1&0&1\\0&0&0&0&1&0\\ \end{bmatrix}$.\\
+We can find the diagonal matrix $\triangle _G$ where $(\triangle _G)_{ii} = \deg (v_i)$ using $A_G$.\\
+$$\triangle _G = \begin{bmatrix}2&0&0&0&0&0\\0&2&0&0&0&0\\0&0&2&0&0&0\\0&0&0&1&0&0\\0&0&0&0&2&0\\0&0&0&0&0&1\\ \end{bmatrix}$$.\\
+Therefore, the Laplacian matrix of $G$, $$L_G = \triangle _G - A_G = \begin{bmatrix}2&-1&-1&0&0&0\\-1&2&-1&0&0&0\\-1&-1&2&0&0&0\\0&0&0&1&-1&0\\0&0&0&-1&2&-1\\0&0&0&0&-1&1\\ \end{bmatrix}$$
+Using matrix calculator, we can find all eigenvalues of $L_G$.\\
+$(\lambda_1,\lambda_2,\lambda_3,\lambda_4,\lambda_5,\lambda_6) = (0, 0, 1, 3, 3, 3)$.
+\newpage
+2. Using $A_{C_3}$, the adjacent matrix of $G$ is $A_G = \begin{bmatrix}0&1&1&0&0&0\\1&0&1&0&0&0\\1&1&0&0&0&0\\0&0&0&0&1&1\\0&0&0&1&0&1\\0&0&0&1&1&0\\ \end{bmatrix}$.\\
+Also, the diagonal matrix $\triangle _G$ is $\triangle _G = \begin{bmatrix}2&0&0&0&0&0\\0&2&0&0&0&0\\0&0&2&0&0&0\\0&0&0&2&0&0\\0&0&0&0&2&0\\0&0&0&0&0&2\\ \end{bmatrix}$.\\
+The Laplacian matrix of $G$ is $L_G = \triangle _G - A_G = \begin{bmatrix}2&-1&-1&0&0&0\\-1&2&-1&0&0&0\\-1&-1&2&0&0&0\\0&0&0&2&-1&-1\\0&0&0&-1&2&-1\\0&0&0&-1&-1&2\\ \end{bmatrix}$.\\
+Using matrix calculator, we can find all eigenvalues of $L_G$.\\
+$(\lambda_1,\lambda_2,\lambda_3,\lambda_4,\lambda_5,\lambda_6) = (0, 0, 3, 3, 3, 3)$.\\
+We can check that both two cases have $\lambda_2 = 0$, so, this is not connected graph. So, $\lambda_2 ( L_G), \lambda _2 ( L_{\tilde{G}} )$, the algebraic connectivity of $G$ and $\tilde{G}$ holds below inequality.\\
+$$\lambda_2(L_G) \leq \lambda_2(L_{\tilde{G}}) \leq \lambda_2(L_G) + 2$$
+\end{proof}
+
+\end{document}

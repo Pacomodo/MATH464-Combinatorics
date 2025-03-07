@@ -1,0 +1,63 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry} % DL: 쪽여백 조정
+\usepackage{setspace} % DL: 줄간격 조정
+\usepackage{graphicx} % Required for inserting images
+\usepackage{kotex}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+% set indent length to zero.
+\setlength{\parindent}{0pt}
+
+\def\foo#1#2{#2 and #1}
+\def\point(#1, #2){x axis is {#1} and y axis is{#2}}
+
+\title{0911 Class Activity}
+\author{박예영}
+
+\begin{document}
+\maketitle
+
+Let $U_n$ be the number of unlabeled trees on n vertices.
+Prove that for $n > 3$, $$ \frac{ n^{n-2} }{ n! } < U_n < \binom{2n - 2} {n - 1}$$.
+
+\doublespacing
+
+\begin{proof}
+
+1. $\displaystyle n^{n-2} < U_n n!$
+\\
+$U_n$의 원소 $G$의 각 정점마다 $1, 2, 3, ... ,n$의 라벨을 부여하여, 이 $G$들을 모은 집합 $S_n$을 생각해봅시다. 이 집합은 원소 $G$ 하나 당 라벨을 부여하는 방법이 총 $n!$가지 존재하므로, $|S_n| = U_n n!$입니다.
+\\ n개의 정점을 가지는 labeled tree의 집합을 $T_n$이라고 합시다.
+\\ $S_n$은 unlabeled tree의 각 정점에 라벨을 부여하여 모은 집합이므로, 명백히 $|T_n| \leq |S_n|$이 성립합니다.
+\\ $S_n$에 있는 일직선 모양의 두 그래프 $G, G'$을 생각해봅시다. $G$에는 $(1, 2, ..., n)$의 라벨이 부여되었고, $G'$에는 $(n, n-1, ..., 2, 1)$의 라벨이 부여되었습니다. 두 그래프 $G$와 $G'$은 서로 isomorphic하므로, $|S_n| \neq |T_n|$입니다.
+따라서, $|T_n| < |S_n|$입니다.\\
+
+
+2. $\displaystyle U_n < \binom{2n-2} {n-1}$
+\\
+Rooted tree는 $U_n$의 원소 $G$의 특정한 한 정점에 라벨을 부여한 그래프입니다. 이 정점을 root라고 부릅니다. n개의 정점을 가진 rooted tree의 집합을 $R_n$이라고 합시다. $R_n$은 $U_n$의 원소 $G$의 한 정점에 라벨을 부여하여 모은 집합이므로, 명백히 $|U_n| < |R_n|$이 성립됩니다.
+\\
+$0$을 $n-1$개, $1$을 $n-1$개 사용하여 만든 수열 $(a_1, a_2, ..., a_{2n-2})$을 생각해봅시다. 이 수열들을 모은 집합을 $A_n$이라고 합시다.
+\\
+$|A_n| = \displaystyle \frac{(2n-2)!}{(n-1)!(n-1)!} = \binom{2n-2}{n-1}$입니다.\\
+
+
+\noindent
+한편, 다음과 같은 방법으로 $A_n$의 원소(수열)를 통해 rooted tree를 구성한다고 해봅시다.
+
+1. root가 하나 존재한다고 해봅시다. 수열을 순서대로 보면서, 1이 나오면 한 정점에 간선을 잇습니다. 이때, 이을 수 있는 정점들 중 root와 가장 먼 정점에 간선을 잇습니다.
+
+\vskip 1pc % 1pt 1pc(=12pt) 1ex 1em 1mm 1cm 1in (1mu (수식 안에서만))
+
+2. 0이 나오면 한 간선에 정점을 붙입니다. 이때, 붙일 수 있는 간선들 중에서 root와 정점의 거리가 가장 멀도록 하는 간선에 정점을 붙입니다.
+
+Rooted tree $T$가 있다면, $T$를 만드는 수열이 존재함을 확인할 수 있습니다.
+
+한편, 0으로 시작하는 수열은 위의 방법을 통해 rooted tree를 구성할 수 없습니다.
+
+따라서 $|R_n| < |A_n|$입니다.
+
+따라서, $\displaystyle |U_n| < |R_n| < |A_n| = \binom{2n-2}{n-1}$입니다.
+\end{proof}
+
+\end{document}

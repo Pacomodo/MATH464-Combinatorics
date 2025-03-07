@@ -1,0 +1,32 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry} % DL: 쪽여백 조정
+\usepackage{setspace} % DL: 줄간격 조정
+\usepackage{graphicx} % Required for inserting images
+\usepackage{kotex}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mdframed}
+
+% set indent length to zero.
+\setlength{\parindent}{0pt}
+
+\title{0922 Class Activity}
+\author{박예영}
+
+\begin{document}
+\maketitle
+\begin{mdframed}
+Show that if $G$ is a simple graph with $p$ vertices, where each vertex has degree not less than $\displaystyle \frac{p-1}{2}$, then $G$ must be connected.
+\end{mdframed}
+\doublespacing
+
+\begin{proof}
+Suppose that $G$ is not connected simple graph with $p$ vertices and each vertex in $G$ has degree not less than $\displaystyle \frac{p-1}{2}$. Then, we can split the vertex set $V$ into two sets $V_1$ and $V_2$, where for any $v \in V_1$ and $w \in V_2$, there are no edges $(v, w)$ in the edge set $E$.
+
+Let $|V_1| = a$ and $|V_2| = b$. Since each vertex in $V_1$ has degree not less than $\displaystyle \frac{p-1}{2}$ and these vertices are not connected into $V_2$, the number of vertices in $V_1$, $a$, must be larger than or equal to $\displaystyle \frac{p-1}{2} + 1$.
+
+Similarly, the number of vertices in $V_2$, $b$, must be larger than or equal to $\displaystyle \frac{p-1}{2} + 1$.
+
+Hence, the number of vertices in $V$ must be larger than or equal to $\displaystyle (p-1) + 1 + 1 = p+1$, which contradicts to $G$ has $p$ vertices.
+
+\end{proof}
+
+\end{document}

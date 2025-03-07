@@ -1,0 +1,31 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry} % DL: 쪽여백 조정
+\usepackage{setspace} % DL: 줄간격 조정
+\usepackage{graphicx} % Required for inserting images
+\usepackage{kotex}
+
+\title{0904 Class Activity}
+\author{박예영}
+
+\begin{document}
+\maketitle
+1. $K_{m,n}$의 edge의 개수는?
+
+\doublespacing
+
+Proof)
+The number of edges in $K_{m, n}$ is $mn$.
+We want to use the handshaking lemma to prove this.
+First, let $V, E$ be the vertex set and the edge set of the $K_{m, n}$. By definition of the $K_{m, n}$, we can partition $V$ into two disjoint vertex sets $V_1, V_2$; $|V_1| = m, |V_2| = n$.
+Since each vertex in $V_1$ is connected to all of the vertices in $V_2$,  $v \in V_1$ has degree $n$. Similarly, $v \in V_2$ has degree $m$.
+Hence, $\sum_{v \in V} deg(v) = \sum_{v \in V_1} deg(v) + \sum_{v \in V_2} deg(v) = \sum_{v \in V_1} n + \sum_{v \in V_2} m = mn + nm = 2mn = 2|E|$.
+Therefore, $|E| = mn$.
+
+\doublespacing
+
+2. $K_{m,n}$이 regular graph가 되기 위한 필요충분조건은?
+
+All vertices in a regular graph have the same degree.
+Let $V = V_1 \cup V_2; V_1 \cap V_2 \neq \emptyset $. As I wrote above, $v \in V_1$ has degree $n$ and $v \in V_2$ has degree $m$.
+So, $m = n$ has to be satisfied to $K_{m, n}$ be a regular graph, and vice versa.
+\end{document}
